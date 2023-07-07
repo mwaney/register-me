@@ -17,7 +17,12 @@ const getUsers = asyncHandler(async (req, res) => {
  * @access public
  */
 const getUser = asyncHandler(async (req, res) => {
-  res.send(`Get user with id ${req.params.id}`);
+  const user = await User.findById(req.params.id);
+  if (!user) {
+    res.status(400);
+    throw new Error(`User with id ${req.params.id} not found!!!`);
+  }
+  res.status(200).json(user);
 });
 
 /**
@@ -46,7 +51,16 @@ const addUser = asyncHandler(async (req, res) => {
  * @access public
  */
 const updateUser = asyncHandler(async (req, res) => {
-  res.send(`Update user with id ${req.params.id}`);
+  const user = await User.findById(req.params.id);
+  if (!user) {
+    res.status(400);
+    throw new Error(`User with id ${req.params.id} not found!!!`);
+  }
+
+  const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  res.status(200).json(updatedUser);
 });
 
 /**
@@ -55,7 +69,14 @@ const updateUser = asyncHandler(async (req, res) => {
  * @access public
  */
 const deleteUser = asyncHandler(async (req, res) => {
-  res.send(`Delete user with id ${req.params.id}`);
+  const user = await User.findById(req.params.id);
+  if (!user) {
+    res.status(400);
+    throw new Error(`User with id ${req.params.id} not found!!!`);
+  }
+
+  await User.deleteOne();
+  res.status(200).json(user);
 });
 
 module.exports = { getUsers, getUser, addUser, updateUser, deleteUser };
