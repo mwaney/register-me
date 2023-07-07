@@ -1,0 +1,32 @@
+{
+  "name": "register-me",
+  "version": "1.0.0",
+  "description": "A node.js backend application that performs CRUD operations",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwaney/register-me.git"
+  },
+  "keywords": [
+    "log",
+    "in",
+    "form",
+    "register"
+  ],
+  "author": "Edwin Mwaniki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwaney/register-me/issues"
+  },
+  "homepage": "https://github.com/mwaney/register-me#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.3.2"
+  }
+}
