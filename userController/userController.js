@@ -5,10 +5,10 @@ const User = require("../Models/userModel");
  * @route GET /api/users
  * @access public
  */
-const getUsers = async (req, res) => {
+const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find();
   res.status(200).json(users);
-};
+});
 
 /**
  *
@@ -16,9 +16,9 @@ const getUsers = async (req, res) => {
  * @route GET /api/users/:id
  * @access public
  */
-const getUser = async (req, res) => {
+const getUser = asyncHandler(async (req, res) => {
   res.send(`Get user with id ${req.params.id}`);
-};
+});
 
 /**
  *
@@ -26,7 +26,7 @@ const getUser = async (req, res) => {
  * @route POST /api/users/
  * @access public
  */
-const addUser = async (req, res) => {
+const addUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     res.status(400);
@@ -38,24 +38,24 @@ const addUser = async (req, res) => {
     password,
   });
   res.status(201).json(user);
-};
+});
 
 /**
  * @desc Upddate one user using id
  * @route PUT /api/users/:id
  * @access public
  */
-const updateUser = async (req, res) => {
+const updateUser = asyncHandler(async (req, res) => {
   res.send(`Update user with id ${req.params.id}`);
-};
+});
 
 /**
  * @desc Delete one user using id
  * @route DELETE /api/users/:id
  * @access public
  */
-const deleteUser = async (req, res) => {
+const deleteUser = asyncHandler(async (req, res) => {
   res.send(`Delete user with id ${req.params.id}`);
-};
+});
 
 module.exports = { getUsers, getUser, addUser, updateUser, deleteUser };
