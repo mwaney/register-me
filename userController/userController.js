@@ -76,6 +76,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   }
 
   await User.deleteOne({ _id: req.params.id });
+
   res.status(200).json(user);
 });
 
